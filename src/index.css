@@ -3,8 +3,6 @@ body {
   font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
     'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
     sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
 }
 
 code {
@@ -23,6 +21,7 @@ body {
   font-size: 20px;
 
 }
+
 header {
   position: absolute;
   background-color: #8994f8;
@@ -37,6 +36,18 @@ header {
 
 div {
     resize: both;
+}
+
+.title {
+  position: relative;
+  color: #f7cb46;
+  font-weight: bolder;
+  font-family: 'helvetica neue';
+  box-shadow: 1rem 1rem #000000;
+  padding: 2rem, 2rem, 5rem 5rem;
+  margin: 50px auto;
+  text-align: center;
+
 }
 
 .words {
