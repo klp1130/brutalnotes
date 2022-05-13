@@ -1,11 +1,22 @@
 import './App.css';
+import './index.css';
+import React  from 'react';
 
-function App() {
+const App = () => {
+
+  //const [notes, setNotes] = useState([])
+
   return (
     <div className="App">
-      <header className="App-header">
+<body>
 
-      </header>
+  <div className='words' contentEditable placeholder='What would you like to say>'>
+  </div>
+  <div className='notes' contentEditable>
+
+  </div>
+</body> 
+      
     </div>
   );
 }
