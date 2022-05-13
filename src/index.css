@@ -21,6 +21,18 @@ body {
   font-family: 'helvetica neue';
   font-weight: 200;
   font-size: 20px;
+
+}
+header {
+  position: absolute;
+  background-color: #8994f8;
+  max-width: 500px;
+  margin: 50px auto;
+  max-width: 500px;
+  padding: 1rem, 2rem, 1rem 5rem;
+  stroke: 2px #000000;
+  background-size: 100% 3rem;
+
 }
 
 div {
