@@ -8,14 +8,12 @@ const App = () => {
 
   return (
     <div className="App">
-<body>
 
   <div className='words' contentEditable placeholder='What would you like to say>'>
   </div>
   <div className='notes' contentEditable>
 
   </div>
-</body> 
       
     </div>
   );
