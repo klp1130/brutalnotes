@@ -3,7 +3,7 @@ import './index.css';
 import React, {useState, useEffect} from 'react';
 import axios from 'axios'
 import Header from './components/Header';
-
+import Note from './components/Note';
 
 const App = () => {
   const [notes, setNotes] = useState([])
@@ -47,14 +47,22 @@ const App = () => {
       <div className='words' >
         <form onSubmit={addNote}>
           <input
-            type='text'
             value={newNote}
             onChange={handleNoteChange}
           />
           <button type="submit">save</button>
         </form>
       </div>
-    <div className='notes' >
+    <div>
+      {notes.map(note => 
+        <Note 
+          key={note.id}
+          note={note}
+        />  
+        )}
+      </div>
+    <div className='savedNotes' >
+
 
   </div>
       

@@ -53,7 +53,7 @@ border-radius: 5px;
 overflow: hidden;
 }
 
-.notes {
+.savedNotes {
 position: relative;
 margin: 50px auto;
 max-width: 500px;
@@ -69,3 +69,4 @@ overflow: hidden;
 p {
   margin: 0 0 3rem;
 }
+
