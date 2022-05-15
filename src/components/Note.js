@@ -14,7 +14,6 @@ const noteStyle = {
 
 }
 
-
 const Note = ({note}) => {
   return (
     <ul style={noteStyle}>

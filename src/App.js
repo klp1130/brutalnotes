@@ -1,26 +1,37 @@
 import './App.css';
 import './index.css';
 import React, {useState, useEffect} from 'react';
-import axios from 'axios'
 import Header from './components/Header';
 import Note from './components/Note';
+import noteService from './services/notes'
 
 const App = () => {
   const [notes, setNotes] = useState([])
   const [newNote, setNewNote] = useState('')
+  const {noteToShow, setNoteToShow} = useState([])
 
 
   useEffect(() => {
-    console.log('effect')
-    axios
-      .get('http://localhost:3001/notes')
-      .then(response => {
-        console.log('promise fulfilled');
-        setNotes(response.data)
-     })
+    noteService
+      .getAll()
+      .then(initialNotes => {
+        setNotes(initialNotes.data)
+        setNoteToShow(initialNotes)
+      })
   }, [])
-    console.log('render', notes.length, 'notes');
 
+ /* noteService
+    .update(id, changedNote)
+    .then(returnedNote => {
+      setNotes(notes.map(note => note.id !==id ? note : returnedNote.data))
+    })
+    .catch(error => {
+      alert(
+        `the note '${note.content}' was already deleted from server`
+      )
+      setNotes(filter(n => n.id !== id))
+    })
+*/
 
   const addNote = (event) => {
     event.preventDefault()
@@ -28,11 +39,14 @@ const App = () => {
       content: newNote, 
       date: new Date().toISOString(),
       id: notes.length + 1,
-    }
-
-    setNotes(notes.concat(noteObject))
-    setNewNote('')
-
+  }
+    
+  noteService
+    .create(noteObject)
+    .then(returnedNote => {
+    setNotes(notes.concat(returnedNote))
+    setNoteToShow(notes.concat(returnedNote))
+    })
   }
 
 
@@ -40,9 +54,18 @@ const App = () => {
     setNewNote(event.target.value)
   }
   
+  noteService
+    .deleteNote(id)
+    .then(response => {
+    setNotes(notes.filter(n => n.id !== id))
+    setNoteToShow(noteToShow.filter(p=> p.id !==id))
+    })
+       
+
+  
 
   return (
-    <>
+    <div className='container'>
     <Header />
       <div className='words' >
         <form onSubmit={addNote}>
@@ -61,12 +84,10 @@ const App = () => {
         />  
         )}
       </div>
-    <div className='savedNotes' >
-
-
-  </div>
       
-    </>
+
+      
+    </div>
   );
 }
 

@@ -26,6 +26,11 @@ div {
     resize: both;
 }
 
+.container {
+  max-width: 500px;
+  margin: 0 auto;
+}
+
 /*.title {
   position: relative;
   color: #f7cb46;
