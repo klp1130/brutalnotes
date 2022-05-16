@@ -14,14 +14,16 @@ const noteStyle = {
 }
 
 
-const Note = ({note, id, date, handleDeleteNote}) => {
+const Note = ({note, date}) => {
+
   return (
+    <div key={note.id}>
     <ul style={noteStyle}>
       <span>{note.content}</span>
       <small>{date}</small>
-      <button onClick={()=> handleDeleteNote(id)}>delete</button>
-
+      <button>delete</button>
     </ul>
+    </div>
   )
 }
 

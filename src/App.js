@@ -3,7 +3,7 @@ import './index.css';
 import React, {useState, useEffect} from 'react';
 import Header from './components/Header';
 import noteService from './services/notes'
-import NotesList from './components/NotesList';
+import Note from './components/Note';
 
 const App = () => {
   const [notes, setNotes] = useState([])
@@ -60,7 +60,7 @@ const App = () => {
     })
        */
 
-    const deleteNote = (event, id) => {
+   /* const deleteNote = (event, id) => {
       event.preventDefault()
       if (window.confirm(`Delete note ${id}?`)) {
         noteService.remove(id).then(response => {
@@ -68,6 +68,7 @@ const App = () => {
         })
       }
     }
+*/
 
   return (
     <div className='container'>
@@ -81,11 +82,21 @@ const App = () => {
           <button type="submit">save</button>
         </form>
       </div>
-    <NotesList 
-        //note={note} 
-        handleDeleteNote={deleteNote}  />
+        <div>
+            {notes.map(note => 
+            <Note 
+                key={note.id} 
+                note={note} 
+                date={note.date} 
+                // delete toggle  toggleImportance={() => toggleImportanceOf(note.id)}
+
+              />
+          )}
+
+        </div>
+      );
     </div>
-  );
+    );
 }
 
 export default App;
