@@ -11,13 +11,16 @@ const noteStyle = {
     boxShadow: "1rem 1rem #000000",
     borderRadius: "5px",
     overflow: "hidden",
-
 }
 
-const Note = ({note}) => {
+
+const Note = ({note, id, date, handleDeleteNote}) => {
   return (
     <ul style={noteStyle}>
-      {note.content} 
+      <span>{note.content}</span>
+      <small>{date}</small>
+      <button onClick={()=> handleDeleteNote(id)}>delete</button>
+
     </ul>
   )
 }

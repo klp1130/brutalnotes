@@ -2,13 +2,13 @@ import './App.css';
 import './index.css';
 import React, {useState, useEffect} from 'react';
 import Header from './components/Header';
-import Note from './components/Note';
 import noteService from './services/notes'
+import NotesList from './components/NotesList';
 
 const App = () => {
   const [notes, setNotes] = useState([])
   const [newNote, setNewNote] = useState('')
-  const {noteToShow, setNoteToShow} = useState([])
+  //const {noteToShow, setNoteToShow} = useState([])
 
 
   useEffect(() => {
@@ -16,7 +16,6 @@ const App = () => {
       .getAll()
       .then(initialNotes => {
         setNotes(initialNotes.data)
-        setNoteToShow(initialNotes)
       })
   }, [])
 
@@ -45,7 +44,6 @@ const App = () => {
     .create(noteObject)
     .then(returnedNote => {
     setNotes(notes.concat(returnedNote))
-    setNoteToShow(notes.concat(returnedNote))
     })
   }
 
@@ -54,15 +52,22 @@ const App = () => {
     setNewNote(event.target.value)
   }
   
-  noteService
+  /*noteService
     .deleteNote(id)
     .then(response => {
     setNotes(notes.filter(n => n.id !== id))
     setNoteToShow(noteToShow.filter(p=> p.id !==id))
     })
-       
+       */
 
-  
+    const deleteNote = (event, id) => {
+      event.preventDefault()
+      if (window.confirm(`Delete note ${id}?`)) {
+        noteService.remove(id).then(response => {
+          setNotes(notes.filter(n => n.id !== id))
+        })
+      }
+    }
 
   return (
     <div className='container'>
@@ -76,17 +81,9 @@ const App = () => {
           <button type="submit">save</button>
         </form>
       </div>
-    <div>
-      {notes.map(note => 
-        <Note 
-          key={note.id}
-          note={note}
-        />  
-        )}
-      </div>
-      
-
-      
+    <NotesList 
+        //note={note} 
+        handleDeleteNote={deleteNote}  />
     </div>
   );
 }
