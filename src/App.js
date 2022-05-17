@@ -61,15 +61,17 @@ const App = () => {
     })
        */
 
-   /* const deleteNote = (event, id) => {
+    const handleDeleteNote = (event, id) => {
       event.preventDefault()
       if (window.confirm(`Delete note ${id}?`)) {
-        noteService.remove(id).then(response => {
+        noteService
+        .remove(id)
+        .then(response => {
           setNotes(notes.filter(n => n.id !== id))
         })
       }
     }
-*/
+
 
   return (
     <div className='container'>
@@ -89,8 +91,9 @@ const App = () => {
                 key={note.id} 
                 note={note} 
                 date={note.date} 
-
+                handleDeleteNote={handleDeleteNote}
               />
+              
           )}
 
         </div>
