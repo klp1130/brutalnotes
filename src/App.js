@@ -4,19 +4,18 @@ import React, {useState, useEffect} from 'react';
 import Header from './components/Header';
 import noteService from './services/notes'
 import Note from './components/Note';
-import Form from './components/Form';
 
 const App = () => {
-  const [notes, setNotes] = useState()
-  const [newNote, setNewNote] = useState([''])
-  //const {showNote, setShowNote} = useState([])
+  const [notes, setNotes] = useState([])
+  const [newNote, setNewNote] = useState('')
+  //const {noteToShow, setNoteToShow} = useState([])
 
 
   useEffect(() => {
     noteService
       .getAll()
-      .then(response => {
-        setNotes(response.data)
+      .then(initialNotes => {
+        setNotes(initialNotes)
       })
   }, [])
 
@@ -43,8 +42,8 @@ const App = () => {
     
   noteService
     .create(noteObject)
-    .then(response => {
-    setNotes(notes.concat(response))
+    .then(returnedNote => {
+    setNotes(notes.concat(returnedNote))
     setNewNote(' ')
     })
   }
@@ -62,33 +61,38 @@ const App = () => {
     })
        */
 
-   const deleteNote = (event, id) => {
+   /* const deleteNote = (event, id) => {
       event.preventDefault()
       if (window.confirm(`Delete note ${id}?`)) {
-        noteService
-        .remove(id)
-        .then(response => {
-        setNotes(notes.filter(n => n.id !== id))
+        noteService.remove(id).then(response => {
+          setNotes(notes.filter(n => n.id !== id))
         })
       }
     }
-
-
-//const notesToShow = showall
+*/
 
   return (
     <div className='container'>
     <Header />
-      <Form   addNote={addNote} newNote={newNote} handleNoteChange={handleNoteChange}  />
+      <div className='words' >
+        <form onSubmit={addNote}>
+          <input
+            value={newNote}
+            onChange={handleNoteChange}
+          />
+          <button type="submit">save</button>
+        </form>
+      </div>
         <div>
             {notes.map(note => 
             <Note 
                 key={note.id} 
                 note={note} 
                 date={note.date} 
-                deleteNote={deleteNote}
+
               />
           )}
+
         </div>
       );
     </div>
