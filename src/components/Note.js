@@ -20,9 +20,7 @@ const Note = ({note, date, handleDeleteNote, id}) => {
     <ul style={noteStyle}>
       <span>{note.content}</span>
       <small>{date}</small>
-      <button onClick={() => handleDeleteNote(note)}>
-      Delete
-    </button>
+        <button onClick={handleDeleteNote}>Delete</button>
     </ul>
   )
 }

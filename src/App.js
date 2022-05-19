@@ -5,6 +5,8 @@ import Header from './components/Header';
 import noteService from './services/notes'
 import Note from './components/Note';
 
+
+
 const App = () => {
   const [notes, setNotes] = useState([])
   const [newNote, setNewNote] = useState('')
@@ -18,6 +20,7 @@ const App = () => {
         setNotes(initialNotes)
       })
   }, [])
+
 
  /* noteService
     .update(id, changedNote)
@@ -53,16 +56,11 @@ const App = () => {
     setNewNote(event.target.value)
   }
   
-  /*noteService
-    .deleteNote(id)
-    .then(response => {
-    setNotes(notes.filter(n => n.id !== id))
-    setNoteToShow(noteToShow.filter(p=> p.id !==id))
-    })
-       */
+  
+    
 
-    const handleDeleteNote = (event, id) => {
-      event.preventDefault()
+    const handleDeleteNote = (id) => {
+      console.log('delete note ' + id + ' with button')
       if (window.confirm(`Delete note ${id}?`)) {
         noteService
         .remove(id)
@@ -91,7 +89,7 @@ const App = () => {
                 key={note.id} 
                 note={note} 
                 date={note.date} 
-                handleDeleteNote={handleDeleteNote}
+                handleDeleteNote={() => handleDeleteNote(note.id)}
               />
               
           )}
