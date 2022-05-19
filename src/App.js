@@ -5,12 +5,9 @@ import Header from './components/Header';
 import noteService from './services/notes'
 import Note from './components/Note';
 
-
-
 const App = () => {
   const [notes, setNotes] = useState([])
   const [newNote, setNewNote] = useState('')
-  //const {noteToShow, setNoteToShow} = useState([])
 
 
   useEffect(() => {
