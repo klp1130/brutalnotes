@@ -4,11 +4,11 @@ import React, {useState, useEffect} from 'react';
 import Header from './components/Header';
 import noteService from './services/notes'
 import Note from './components/Note';
+import Speak from './components/Speak';
 
 const App = () => {
   const [notes, setNotes] = useState([])
   const [newNote, setNewNote] = useState('')
-
 
   useEffect(() => {
     noteService
@@ -46,15 +46,15 @@ const App = () => {
     setNotes(notes.concat(returnedNote))
     setNewNote(' ')
     })
+      .catch(error => {
+    console.log(error.message);
+  })
   }
 
 
   const handleNoteChange = (event) => {
     setNewNote(event.target.value)
-  }
-  
-  
-    
+  } 
 
     const handleDeleteNote = (id) => {
       console.log('delete note ' + id + ' with button')
@@ -72,12 +72,15 @@ const App = () => {
     <div className='container'>
     <Header />
       <div className='words' >
+      <Speak/>
         <form onSubmit={addNote}>
           <input
             value={newNote}
             onChange={handleNoteChange}
+            
           />
           <button type="submit">save</button>
+
         </form>
       </div>
         <div>
@@ -94,6 +97,7 @@ const App = () => {
         </div>
       );
     </div>
+    
     );
 }
 

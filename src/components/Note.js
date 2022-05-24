@@ -14,7 +14,7 @@ const noteStyle = {
 }
 
 
-const Note = ({note, date, handleDeleteNote, id}) => {
+const Note = ({note, date, handleDeleteNote}) => {
 
   return (
     <ul style={noteStyle}>
