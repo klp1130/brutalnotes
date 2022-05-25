@@ -21,6 +21,7 @@ function Speak() {
   };
 
   const handleStop = () => {
+    console.log({transcript})
     setIsListening(false);
     SpeechRecognition.stopListening();
   };
@@ -38,7 +39,7 @@ function Speak() {
           {isListening ? "Listening........." : "Click to start Listening"}
         </div>
         {isListening && (
-          <button conClick={handleStop}>Stop</button>
+          <button onClick={handleStop}>Stop</button>
         )}
       </div>
       {transcript && (
@@ -47,6 +48,7 @@ function Speak() {
           <button onClick={handleReset}>Reset</button>
         </div>
       )}
+    
     </div>
   );
 }

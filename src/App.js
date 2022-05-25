@@ -4,11 +4,14 @@ import React, {useState, useEffect} from 'react';
 import Header from './components/Header';
 import noteService from './services/notes'
 import Note from './components/Note';
-import Speak from './components/Speak';
+import SpeechRecognition, { useSpeechRecognition } from "react-speech-recognition";
 
 const App = () => {
   const [notes, setNotes] = useState([])
   const [newNote, setNewNote] = useState('')
+  const { transcript, resetTranscript } = useSpeechRecognition();
+  const [isListening, setIsListening] = useState(false);
+
 
   useEffect(() => {
     noteService
@@ -67,12 +70,58 @@ const App = () => {
       }
     }
 
+    if (!SpeechRecognition.browserSupportsSpeechRecognition()) {
+      return (
+        <div className="mircophone-container">
+          Browser is not Support Speech Recognition.
+        </div>
+      );
+    }
+    const handlelistening = () => {
+      setIsListening(true);
+      SpeechRecognition.startListening({
+        continuous: true,
+      });
+    };
+  
+    const handleStop = () => {
+      console.log({transcript})
+      setIsListening(false);
+      SpeechRecognition.stopListening();
+    };
+  
+    const handleReset = () => {
+      handleStop();
+      resetTranscript();
+    };
+  
+    const handleSave = (event) => {
+      console.log(event+ {transcript});
+    }
 
   return (
     <div className='container'>
     <Header />
       <div className='words' >
-      <Speak/>
+      <div className="Speak-wrapper">
+      <div className="Speak-container">
+        <button onClick={handlelistening}>Listen</button>
+        <div className="microphone-status">
+          {isListening ? "Listening........." : "Click to start Listening"}
+        </div>
+        {isListening && (
+          <button onClick={handleStop}>Stop</button>
+        )}
+      </div>
+      {transcript && (
+        <div className="speak-result-container">
+          <div className="speak-result-text">{transcript}</div>
+          <button onClick={handleReset}>Reset</button>
+          <button onClick={handleSave}>add to list</button>
+        </div>
+      )}
+    
+    </div>
         <form onSubmit={addNote}>
           <input
             value={newNote}
@@ -95,7 +144,7 @@ const App = () => {
           )}
 
         </div>
-      );
+      
     </div>
     
     );
