@@ -1,4 +1,3 @@
-import { flexbox } from '@mui/system'
 import React from 'react'
 
 const noteStyle = {
@@ -15,21 +14,20 @@ const noteStyle = {
 }
 
 
-
 const Note = ({note, date, handleDeleteNote, id}) => {
 
   return (
-    <div class="note-container">
     <ul style={noteStyle}>
+          <div className="note-container">
       <span>{note.content}</span>
       <br></br>
       <small>{date}</small>
       <br></br>
-      <button class="delete-buttons" onClick={() => handleDeleteNote(note)}>
+      <button className="delete-buttons" onClick={() => handleDeleteNote(note)}>
       Delete
     </button>
-    </ul>
     </div>
+    </ul>
   )
 }
 

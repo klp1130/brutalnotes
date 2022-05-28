@@ -1,24 +1,9 @@
 {
   "notes": [
     {
-      "content": "This is my first voice note! I am stored in a json server.",
-      "date": "2022-1-17T17:30:31.098Z",
+      "content": "Type a note and hit save :)",
+      "date": "2022-05-28T16:15:18.776Z",
       "id": 1
-    },
-    {
-      "content": "Browser can execute only JavaScript",
-      "date": "2022-1-17T18:39:34.091Z",
-      "id": 2
-    },
-    {
-      "content": "You and also click listen to record a note. Hit save to add the note saved notes",
-      "date": "2022-05-25T17:29:52.771Z",
-      "id": 3
-    },
-    {
-      "content": "asdasdsad",
-      "date": "2022-05-28T13:59:50.290Z",
-      "id": 4
     }
   ]
 }

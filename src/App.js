@@ -43,6 +43,7 @@ const App = () => {
       id: notes.length + 1,
   }
     
+  
   noteService
     .create(noteObject)
     .then(returnedNote => {
@@ -110,15 +111,15 @@ const App = () => {
         </div>
         
       </div>
-      <button class="speech-btns" onClick={handlelistening}>Listen</button>
+      <button className="speech-btns" onClick={handlelistening}>Listen</button>
       {isListening && (
-          <button class="speech-btns" onClick={handleStop}>Stop</button>
+          <button className="speech-btns" onClick={handleStop}>Stop</button>
         )}
       {transcript && (
         <div className="speak-result-container">
           <div className="speak-result-text">{transcript}</div>
-          <button class="speech-btns" onClick={handleReset}>Reset</button>
-          <button class="speech-btns" onClick={handleSave}>add to list</button>
+          <button className="speech-btns" onClick={handleReset}>Reset</button>
+          <button className="speech-btns" onClick={handleSave}>add to list</button>
         </div>
       )}
     
@@ -126,11 +127,10 @@ const App = () => {
         <form onSubmit={addNote}>
           <input
             value={newNote}
+            size="70"
             onChange={handleNoteChange}
-            
           />
           <button type="submit">save</button>
-
         </form>
       </div>
         <div>
