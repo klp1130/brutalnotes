@@ -31,6 +31,26 @@ div {
   margin: 0 auto;
 }
 
+button {
+  padding: 4px 4px;
+  border: 1px solid #000;
+  border-radius: 5px;
+  background-color: #FFFCF3;
+  -webkit-transition: background-color 233ms ease, color 233ms ease;
+  transition: background-color 233ms ease, color 233ms ease;
+  line-height: 1em;
+}
+
+button:hover {
+  background-color: #ffda57;
+  color: #000;
+}
+
+delete-buttons {
+  display: flex;
+  justify-content: flex-end;
+}
+
 /*.title {
   position: relative;
   color: #f7cb46;

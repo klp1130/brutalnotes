@@ -105,19 +105,20 @@ const App = () => {
       <div className='words' >
       <div className="Speak-wrapper">
       <div className="Speak-container">
-        <button onClick={handlelistening}>Listen</button>
         <div className="microphone-status">
           {isListening ? "Listening........." : "Click to start Listening"}
         </div>
-        {isListening && (
-          <button onClick={handleStop}>Stop</button>
-        )}
+        
       </div>
+      <button class="speech-btns" onClick={handlelistening}>Listen</button>
+      {isListening && (
+          <button class="speech-btns" onClick={handleStop}>Stop</button>
+        )}
       {transcript && (
         <div className="speak-result-container">
           <div className="speak-result-text">{transcript}</div>
-          <button onClick={handleReset}>Reset</button>
-          <button onClick={handleSave}>add to list</button>
+          <button class="speech-btns" onClick={handleReset}>Reset</button>
+          <button class="speech-btns" onClick={handleSave}>add to list</button>
         </div>
       )}
     
