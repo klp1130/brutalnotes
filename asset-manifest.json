@@ -1,13 +1,13 @@
 {
   "files": {
     "main.css": "/brutalnotes/static/css/main.f925858e.css",
-    "main.js": "/brutalnotes/static/js/main.6897a853.js",
+    "main.js": "/brutalnotes/static/js/main.904c1e29.js",
     "index.html": "/brutalnotes/index.html",
     "main.f925858e.css.map": "/brutalnotes/static/css/main.f925858e.css.map",
-    "main.6897a853.js.map": "/brutalnotes/static/js/main.6897a853.js.map"
+    "main.904c1e29.js.map": "/brutalnotes/static/js/main.904c1e29.js.map"
   },
   "entrypoints": [
     "static/css/main.f925858e.css",
-    "static/js/main.6897a853.js"
+    "static/js/main.904c1e29.js"
   ]
 }
