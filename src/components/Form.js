@@ -8,7 +8,7 @@ const Form = ({addNote, newNote, handleNoteChange})=> {
           value={newNote} 
           onChange={handleNoteChange} 
           />
-          <button type="submit">save</button>
+          <button className='button' type="submit">save</button>
         </form>
       </div>);
 }
