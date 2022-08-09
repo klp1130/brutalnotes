@@ -39,6 +39,7 @@ button {
   -webkit-transition: background-color 233ms ease, color 233ms ease;
   transition: background-color 233ms ease, color 233ms ease;
   line-height: 1em;
+  color: #000;
 }
 
 button:hover {
