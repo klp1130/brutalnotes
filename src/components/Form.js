@@ -2,13 +2,13 @@ import React from "react"
 
 const Form = ({addNote, newNote, handleNoteChange})=> {
       return (
-          <div className='words'>
+          <div>
           <form onSubmit={addNote}>
           <input 
           value={newNote} 
           onChange={handleNoteChange} 
           />
-          <button className='button' type="submit">save</button>
+          <button type="submit">save</button>
         </form>
       </div>);
 }

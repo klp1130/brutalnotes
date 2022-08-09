@@ -32,7 +32,7 @@ function Speak() {
   };
   
   return (
-    <div className="Speak-wrapper">
+    <div className="words">
       <div className="Speak-container">
         <button onClick={handlelistening}>Listen</button>
         <div className="microphone-status">
